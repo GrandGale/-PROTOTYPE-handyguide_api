@@ -25,15 +25,13 @@ DEBUG = False
 # NOTE: DONT FORGET TO REMOVE LOCALHOST FROM CSRF_TRUSTED_ORIGINS
 CSRF_TRUSTED_ORIGINS = [
     "https://handyman.up.railway.app/",
-    ".localhost",
-    "127.0.0.1",
-    "[::1]",
+    "http://*.localhost",
+    "http://127.0.0.1:8000/",
 ]
 ALLOWED_HOSTS = [
     "https://handyman-api.up.railway.app/",
-    ".localhost",
-    "127.0.0.1",
-    "[::1]",
+    "http://*.localhost",
+    "http://127.0.0.1:8000/",
 ]
 
 

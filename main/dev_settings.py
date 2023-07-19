@@ -25,9 +25,8 @@ DEBUG = True
 CSRF_TRUSTED_ORIGINS = ["https://handyman-api.up.railway.app/"]
 ALLOWED_HOSTS = [
     "https://handyman-api.up.railway.app/",
-    ".localhost",
-    "127.0.0.1",
-    "[::1]",
+    "http://*.localhost",
+    "http://127.0.0.1:8000/",
 ]
 
 # FORM SUBMISSION
