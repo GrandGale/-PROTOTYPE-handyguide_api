@@ -22,12 +22,18 @@ SECRET_KEY = "django-insecure-rc^*w^w&6g9_(uvx#6s*bnt!w)l0rdi%!l7mv#y%uc&x%wo5pk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-CSRF_TRUSTED_ORIGINS = ["https://handyman-api.up.railway.app/"]
-ALLOWED_HOSTS = [
-    "https://handyman-api.up.railway.app/",
+# NOTE: DONT FORGET TO REMOVE LOCALHOST FROM CSRF_TRUSTED_ORIGINS
+CSRF_TRUSTED_ORIGINS = [
+    "https://handyman.up.railway.app",
+    "https://handyman-api.up.railway.app",
     "http://*.localhost",
-    "http://127.0.0.1:8000/",
+    "http://127.0.0.1:8000",
 ]
+ALLOWED_HOSTS = [
+    "handyman-api.up.railway.app",
+    "127.0.0.1",
+]
+
 
 # FORM SUBMISSION
 # Comment out the following line and place your railway URL, and your production URL in the array.
@@ -44,6 +50,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "corsheaders",
     "rest_framework",
+    "handouts",
 ]
 
 MIDDLEWARE = [
@@ -128,6 +135,9 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
+# Media settings
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
