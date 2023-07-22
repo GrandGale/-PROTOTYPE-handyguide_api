@@ -5,8 +5,12 @@ from handouts.utils import get_handout_upload_path
 
 
 class Faculty(models.Model):
-    name = models.CharField(max_length=100, verbose_name="Faculty")
-    abbrev = models.CharField(max_length=10, verbose_name="Abbreviation")
+    name = models.CharField(
+        max_length=100, verbose_name="Faculty", unique=True, db_index=True
+    )
+    abbrev = models.CharField(
+        max_length=10, verbose_name="Abbreviation", unique=True, db_index=True
+    )
 
     class Meta:
         verbose_name = "Faculty"
@@ -17,8 +21,10 @@ class Faculty(models.Model):
 
 
 class Department(models.Model):
-    name = models.CharField(max_length=100, verbose_name="Department")
-    abbrev = models.CharField(max_length=10, verbose_name="Abbreviation")
+    name = models.CharField(
+        max_length=100, verbose_name="Department", unique=True, db_index=True
+    )
+    abbrev = models.CharField(max_length=10, verbose_name="Abbreviation", unique=True)
     faculty = models.ForeignKey(
         Faculty, on_delete=models.PROTECT, verbose_name="Faculty"
     )
@@ -32,8 +38,8 @@ class Department(models.Model):
 
 
 class UnderGradLevel(models.Model):
-    abbrev = models.CharField(max_length=10)
-    level = models.CharField(max_length=4)
+    abbrev = models.CharField(max_length=10, unique=True, db_index=True)
+    level = models.CharField(max_length=4, unique=True)
 
     class Meta:
         verbose_name = "UnderGraduate Level"
@@ -44,8 +50,8 @@ class UnderGradLevel(models.Model):
 
 
 class Course(models.Model):
-    name = models.CharField(max_length=100)
-    code = models.CharField(max_length=10)
+    name = models.CharField(max_length=100, unique=True)
+    code = models.CharField(max_length=10, unique=True, db_index=True)
     level = models.ForeignKey(UnderGradLevel, on_delete=models.PROTECT)
 
     class Meta:
@@ -57,7 +63,7 @@ class Course(models.Model):
 
 
 class Session(models.Model):
-    name = models.CharField(max_length=10)
+    name = models.CharField(max_length=10, unique=True)
 
     def __str__(self) -> str:
         return self.name
@@ -67,7 +73,7 @@ class Handout(models.Model):
     course = models.ForeignKey(Course, on_delete=models.PROTECT)
     department = models.ForeignKey(Department, on_delete=models.PROTECT)
     faculty = models.ForeignKey(Faculty, on_delete=models.PROTECT)
-    session = models.ForeignKey(Session, on_delete=models.CASCADE, null=True)
+    session = models.ForeignKey(Session, on_delete=models.CASCADE)
     file = models.FileField(upload_to=get_handout_upload_path)
     uploaded_by = models.ForeignKey(User, on_delete=models.PROTECT)
 
