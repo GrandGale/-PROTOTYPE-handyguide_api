@@ -79,7 +79,7 @@ class HandoutsListApi(APIView):
     class FilterSerializer(serializers.Serializer):
         limit = serializers.IntegerField(required=False)
         offset = serializers.IntegerField(required=False)
-        course = serializers.CharField(required=False)
+        course_code = serializers.CharField(required=False)
         department = serializers.CharField(required=False)
         faculty = serializers.CharField(required=False)
 
