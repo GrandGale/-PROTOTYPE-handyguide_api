@@ -24,20 +24,14 @@ DEBUG = True
 
 # NOTE: DONT FORGET TO REMOVE LOCALHOST FROM CSRF_TRUSTED_ORIGINS
 CSRF_TRUSTED_ORIGINS = [
-    "https://handyman.up.railway.app",
-    "https://handyman-api.up.railway.app",
+    "https://www.handyguide.io",
+    "https://handyguide.io",
+    "https://api.handyguide.io",
     "http://*.localhost",
     "http://127.0.0.1:8000",
 ]
-ALLOWED_HOSTS = [
-    "handyman-api.up.railway.app",
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = ["handyguide.io", "api.handyguide.io", "127.0.0.1"]
 
-
-# FORM SUBMISSION
-# Comment out the following line and place your railway URL, and your production URL in the array.
-# CSRF_TRUSTED_ORIGINS = ["*"]
 
 # Application definition
 
@@ -51,6 +45,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "django_filters",
+    "storages",
     "handouts",
 ]
 
@@ -136,9 +131,7 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-# Media settings
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

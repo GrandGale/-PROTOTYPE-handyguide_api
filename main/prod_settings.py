@@ -20,18 +20,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # NOTE: DONT FORGET TO REMOVE LOCALHOST FROM CSRF_TRUSTED_ORIGINS
 CSRF_TRUSTED_ORIGINS = [
-    "https://handyman.up.railway.app",
-    "https://handyman-api.up.railway.app",
+    "https://www.handyguide.io",
+    "https://handyguide.io",
+    "https://api.handyguide.io",
     "http://*.localhost",
     "http://127.0.0.1:8000",
 ]
-ALLOWED_HOSTS = [
-    "handyman-api.up.railway.app",
-]
+ALLOWED_HOSTS = ["handyguide.io", "api.handyguide.io"]
 
 
 INSTALLED_APPS = [
@@ -44,6 +43,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "django_filters",
+    "storages",
     "handouts",
 ]
 
@@ -132,6 +132,15 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+# Azure Blob Storage
+DEFAULT_FILE_STORAGE = "main.azure.AzureMediaStorage"
+
+MEDIA_LOCATION = "media"
+
+AZURE_ACCOUNT_NAME = "handyguide"
+AZURE_CUSTOM_DOMAIN = f"media.handyguide.io"
+MEDIA_URL = f"https://{AZURE_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
