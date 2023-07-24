@@ -78,6 +78,7 @@ class Handout(models.Model):
     )
     session = models.ForeignKey(Session, on_delete=models.CASCADE)
     file = models.FileField(upload_to=get_handout_upload_path)
+    title = models.CharField(max_length=100, default="Untitled")
     uploaded_by = models.ForeignKey(User, on_delete=models.PROTECT)
 
     class Meta:
@@ -85,4 +86,4 @@ class Handout(models.Model):
         verbose_name_plural = "Handouts"
 
     def __str__(self):
-        return "{} - {}".format(self.course, self.session)
+        return "{} - {} - {}".format(self.course, self.title, self.session)
