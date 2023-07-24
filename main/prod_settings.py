@@ -20,14 +20,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # NOTE: DONT FORGET TO REMOVE LOCALHOST FROM CSRF_TRUSTED_ORIGINS
 CSRF_TRUSTED_ORIGINS = [
     "https://www.handyguide.io",
     "https://handyguide.io",
     "https://api.handyguide.io",
-    "https://.up.railway.app",
+    "https://*.up.railway.app",
     "http://*.localhost",
     "http://127.0.0.1:8000",
 ]
