@@ -27,7 +27,8 @@ CSRF_TRUSTED_ORIGINS = [
     "https://www.handyguide.io",
     "https://handyguide.io",
     "https://api.handyguide.io",
-    "https://.up.railway.app" "http://*.localhost",
+    "https://.up.railway.app",
+    "http://*.localhost",
     "http://127.0.0.1:8000",
 ]
 ALLOWED_HOSTS = ["handyguide.io", "api.handyguide.io", ".up.railway.app"]
