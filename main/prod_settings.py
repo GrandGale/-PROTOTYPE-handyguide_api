@@ -137,9 +137,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # AWS S3 Storage Settings
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
-AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
-AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
-AWS_STORAGE_BUCKET_NAME = os.environ["AWS_STORAGE_BUCKET_NAME"]
+AWS_ACCESS_KEY_ID = "AKIA4GCDHFSC22GDKUZI"  # os.environ["AWS_ACCESS_KEY_ID"]
+AWS_SECRET_ACCESS_KEY = (
+    "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"  # os.environ["AWS_SECRET_ACCESS_KEY"]
+)
+AWS_STORAGE_BUCKET_NAME = "handyguide-storage" #os.environ["AWS_STORAGE_BUCKET_NAME"]
 AWS_DEFAULT_ACL = "public-read"
 AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
 AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
