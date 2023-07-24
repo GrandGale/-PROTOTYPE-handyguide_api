@@ -2,7 +2,7 @@ from typing import List, Tuple
 from django.db.models.query import QuerySet
 
 from handouts.filters import BaseHandoutFilter
-from handouts.models import Course, Department, Faculty, Handout
+from handouts.models import Course, Department, Faculty, Handout, UnderGradLevel
 
 
 def handouts_list(*, filters=None) -> QuerySet[Handout]:
@@ -32,10 +32,11 @@ def get_faculty_department_course_list() -> (
     This function retrieves all Faculty, Department, and Course objects and returns them as lists.
 
     Returns:
-        Tuple[List[Faculty], List[Department], List[Course]]: A tuple containing lists of all faculties,
-                                                             departments, and courses.
+        Tuple[List[Faculty], List[Department], List[Course], List[UnderGradLevel]]: A tuple containing lists of all faculties,
+                                                             departments, courses and levels.
     """
     faculties = Faculty.objects.all()
     departments = Department.objects.all()
     courses = Course.objects.all()
-    return faculties, departments, courses
+    lvls = UnderGradLevel.objects.all()
+    return faculties, departments, courses, lvls

@@ -13,7 +13,7 @@ from handouts.utils import inline_serializer
 # -------------------
 
 
-class FacultyDepartmentCourseListApi(APIView):
+class FacultyDepartmentCourseLevelListApi(APIView):
     """
     API view to retrieve lists of all faculties, departments, and courses."""
 
@@ -29,18 +29,24 @@ class FacultyDepartmentCourseListApi(APIView):
         name = serializers.CharField()
         code = serializers.CharField()
 
+    class UndergradLevelSerializer(serializers.Serializer):
+        level = serializers.CharField()
+        abbrev = serializers.CharField()
+
     def get(self, request):
-        faculties, departments, courses = get_faculty_department_course_list()
+        faculties, departments, courses, lvls = get_faculty_department_course_list()
 
         faculties_serializer = self.FacultySerializer(faculties, many=True)
         departments_serializer = self.DepartmentSerializer(departments, many=True)
         courses_serializer = self.CourseSerializer(courses, many=True)
+        lvls_serializer = self.UndergradLevelSerializer(lvls, many=True)
 
         return Response(
             {
                 "faculties": faculties_serializer.data,
                 "departments": departments_serializer.data,
                 "courses": courses_serializer.data,
+                "lvls": lvls_serializer.data,
             },
             status=status.HTTP_200_OK,
         )
