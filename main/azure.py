@@ -1,3 +1,5 @@
+# NOTE: THIS IS NO LONGER USED
+
 import os
 
 from storages.backends.azure_storage import AzureStorage
