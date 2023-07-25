@@ -8,3 +8,4 @@ class AzureMediaStorage(AzureStorage):
     account_key = os.environ["AZURE_ACCOUNT_KEY"]
     azure_container = "handouts"
     expiration_secs = None
+    
